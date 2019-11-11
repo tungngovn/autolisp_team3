@@ -6,10 +6,10 @@ Vẽ trục:
 + dbrt: đường kính bánh răng thẳng
 + dbrn: đường kính bánh răng nghiêng
 + tsobi: mảng các kích thước ổ bi có thể được chọn bảng P2.12 pg.264 sách tập 1
-+ dobi:
-+ bbrt:
-+ bbrn:
-+ tobi:
++ dobi: đường kính ổ bi
++ bbrt: độ dày bánh răng thẳng
++ bbrn: độ dày bánh răng nghiêng
++ tobi: độ dày ổ bi
 
 - Parameters:
 + bth1:
@@ -22,10 +22,12 @@ Vẽ trục:
 + cv
 
 - Command:
-+ assoc
-+ nth
++ (assoc item assist): hàm tìm kiếm từ khóa item trong danh sách assist.
++ (nth n lst): Lấy ra phần tử thứ n trong danh sách lst, đánh số từ 0.
 + g270: góc 270 degree
 + g0: góc 0 deg
 + g90: góc 90 deg
-+ ssadd
-+ entlast
++ (ssadd [ename[ss]]): thêm đối tượng ename vào nhóm chọn ss
++ entlast: Lấy tên đối tượng vẽ sau cùng
++ mapcar
++ (polar pt ang dist): trả về một điểm qua tọa độ cực với điểm pt, góc ang, khoảng cách dist

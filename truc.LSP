@@ -1,7 +1,7 @@
 (defun truc ()
   
 
-; 
+; Lay bth1
   (if (and (> dbrt 10) (<= dbrt 17))
     (setq bth1 5
     )
@@ -47,7 +47,7 @@
     )
   )
 
-
+; Lay bth2
   (if (and (> dbrn 12) (<= dbrn 17))
     (setq bth2 5
     )
@@ -112,8 +112,8 @@
 		   )
 
       )
-	(setq item (assoc dobi tsobi))   
-    (setq tobi (nth 2 item))   
+	(setq item (assoc dobi tsobi))   ; Tim o bi phu hop trong mang tsobi
+    (setq tobi (nth 2 item))   ; Lay ra chieu day banh rang
 
   (setq tr0  (getpoint "Nh\U+1EADp \U+0111i\U+1EC3m \U+0111\U+1EC3 b\U+1EAFt \U+0111\U+1EA7u v\U+1EBD tr\U+1EE5c:")
 	
