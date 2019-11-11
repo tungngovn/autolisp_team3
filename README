@@ -1,1 +1,31 @@
-Upload code in this repository.
+﻿Upload code in this repository.
+
+
+Vẽ trục:
+- Input: 
++ dbrt: đường kính bánh răng thẳng
++ dbrn: đường kính bánh răng nghiêng
++ tsobi: mảng các kích thước ổ bi có thể được chọn bảng P2.12 pg.264 sách tập 1
++ dobi:
++ bbrt:
++ bbrn:
++ tobi:
+
+- Parameters:
++ bth1:
++ bth2:
++ tr0: điểm bắt đầu vẽ
++ tr1 - tr19: các điểm
++ th1 - th17: các điểm
++ pc1 - pc2:
++ px1 - px2:
++ cv
+
+- Command:
++ assoc
++ nth
++ g270: góc 270 degree
++ g0: góc 0 deg
++ g90: góc 90 deg
++ ssadd
++ entlast
