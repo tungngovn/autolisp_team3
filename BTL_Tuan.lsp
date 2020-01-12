@@ -50,6 +50,8 @@
   (command "-layer" "m"	"_mss.cat1" "c"	3 "" "lt" "continuous" "" "")
   (setvar "clayer" clay)
 )
+
+
 (defun ss-mirror (ss p1 p2 flag / ent ss1 num ind)
   (if (null ss)
     (setq ss1 NIL)
@@ -735,7 +737,7 @@
 	  (setq item2 (assoc dphot tsnap))
 
 
-(defun napo( / d3)
+(defun napo()
 
 (setq  d3 (/ dn 2.0) )
 (setq item2 (assoc dphot tsnap))
@@ -1187,6 +1189,33 @@
 
 )
 
+;;;Ham ghi kich thuoc
+(defun dimvarsetting ()
+;;; textstyle: Thay font mac dinh bang ARIAL
+  (command "-style" "" "arial" "" "" "" "" "")
+;;; dim style: theo TCVN
+  (setvar "DIMTAD" 1)
+  (setvar "DIMTIH" 1)
+  (setvar "DIMTOH" 1)
+  (setvar "DIMSCALE" 10) ;; kich thuoc mui ten, co chu... = 10 lan so voi mac dinh cua CAD
+)
+
+(defun ghikichthuoc (p1 p2 p3 / kieu)
+;;; H - ghi kich thuoc ngang
+;;; V - ghi kich thuoc doc
+;;; A - ghi kich thuoc giua 2 diem (align)
+  (dimvarsetting)
+  ;(setq	p1 (getpoint "\nNhap diem 1: ")
+	;p2 (getpoint p1 "\nNhap diem 2: ")
+  ;)
+  (command ".line" p1 p2 "")
+  ;(setq p3 (getpoint "\nNhap diem dat duong kich thuoc: "))
+  (command "dim" "hor" p1 p2 p3 "" "Exit")
+  ;;; Ghi chu: thay "HOR" bang
+  ;;; "VER" ghi kich thuoc theo chieu dung
+  ;;; "ALIGN" ghi kich thuoc giua 2 diem kieu align
+)
+
 
 
 (defun c:aa ()
@@ -1221,4 +1250,8 @@
   (brn)
   (vongbi)
   (napo)
+  ;(setq p1 vm37)
+  ;(setq p2 vm25)
+  ;(setq p3 tr2)
+  (ghikichthuoc vm37 vm25 tr2)
 )
