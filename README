@@ -3,11 +3,11 @@
 
 Vẽ trục:
 - Input: 
-+ dbrt: đường kính bánh răng thẳng
++ dbd: đường kính bánh đai
 + dbrn: đường kính bánh răng nghiêng
 + tsobi: mảng các kích thước ổ bi có thể được chọn bảng P2.12 pg.264 sách tập 1
 + dobi: đường kính ổ bi
-+ bbrt: độ dày bánh răng thẳng
++ bbd: độ dày bánh đai
 + bbrn: độ dày bánh răng nghiêng
 + tobi: độ dày ổ bi
 
@@ -15,9 +15,8 @@ Vẽ trục:
 + bth1:
 + bth2:
 + tr0: điểm bắt đầu vẽ
-+ tr1 - tr19: các điểm
-+ th1 - th17: các điểm
-+ pc1 - pc2:
++ tr1 - tr19: các điểm vẽ trục
++ th1 - th17: các điểm vẽ then
 + px1 - px2:
 + cv
 
