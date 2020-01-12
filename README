@@ -12,13 +12,13 @@ Vẽ trục:
 + tobi: độ dày ổ bi
 
 - Parameters:
-+ bth1:
-+ bth2:
++ bth1: chiều rộng then 1 (bánh đai)
++ bth2: chiều rộng then 2 (bánh răng nghiêng)
 + tr0: điểm bắt đầu vẽ
 + tr1 - tr19: các điểm vẽ trục
 + th1 - th17: các điểm vẽ then
 + px1 - px2:
-+ cv
++ cv 
 
 - Command:
 + (assoc item assist): hàm tìm kiếm từ khóa item trong danh sách assist.
