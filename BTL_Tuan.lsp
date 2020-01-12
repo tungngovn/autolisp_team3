@@ -1274,7 +1274,7 @@
   (setvar "DIMTAD" 1)
   (setvar "DIMTIH" 1)
   (setvar "DIMTOH" 1)
-  (setvar "DIMSCALE" 10) ;; kich thuoc mui ten, co chu... = 10 lan so voi mac dinh cua CAD
+  (setvar "DIMSCALE" 1) ;; kich thuoc mui ten, co chu... = 10 lan so voi mac dinh cua CAD
 )
 
 (defun ghikichthuoc (p1 p2 p3 / kieu)
@@ -1282,11 +1282,7 @@
 ;;; V - ghi kich thuoc doc
 ;;; A - ghi kich thuoc giua 2 diem (align)
   (dimvarsetting)
-  ;(setq	p1 (getpoint "\nNhap diem 1: ")
-	;p2 (getpoint p1 "\nNhap diem 2: ")
-  ;)
-  (command ".line" p1 p2 "")
-  ;(setq p3 (getpoint "\nNhap diem dat duong kich thuoc: "))
+  ;(command ".line" p1 p2 "")
   (command "dim" "hor" p1 p2 p3 "" "Exit")
   ;;; Ghi chu: thay "HOR" bang
   ;;; "VER" ghi kich thuoc theo chieu dung
@@ -1325,7 +1321,7 @@
   (brn)
   (vongbi)
   (napo)
-  (ghikichthuoc vm37 vm25 tr2)
+  (ghikichthuoc vm37 vm25 tr1)
   (napday)
 )
 
