@@ -149,52 +149,52 @@
     )
   )
   
-  
-  ;; Chon then banh dai
-  (if (and (> l 12) (<= l 17))
-    (setq bth1 5
-    )
-  )
-  (if (and (> l 17) (<= l 22))
-    (setq bth1 6
-    )
-  )
-  (if (and (> l 22) (<= l 30))
-    (setq bth1 8
-    )
-  )
-  (if (and (> l 30) (<= l 38))
-    (setq bth1 10
-    )
-  )
-  (if (and (> l 38) (<= l 44))
-    (setq bth1 12
-    )
-  )
-  (if (and (> l 44) (<= l 50))
-    (setq bth1 14
-    )
-  )
-  (if (and (> l 50) (<= l 58))
-    (setq bth1 16
-    )
-  )
-  (if (and (> l 58) (<= l 65))
-    (setq bth1 18
-    )
-  )
-  (if (and (> l 65) (<= l 75))
-    (setq bth1 20
-    )
-  )
-  (if (and (> l 75) (<= l 85))
-    (setq bth1 22
-    )
-  )
-  (if (> l 85)
-    (setq bth1 24
-    )
-  )
+  ;; Chon then banh dai	
+  (if (and (> l 12) (<= l 17))	
+    (setq bth1 5	
+    )	
+  )	
+  (if (and (> l 17) (<= l 22))	
+    (setq bth1 6	
+    )	
+  )	
+  (if (and (> l 22) (<= l 30))	
+    (setq bth1 8	
+    )	
+  )	
+  (if (and (> l 30) (<= l 38))	
+    (setq bth1 10	
+    )	
+  )	
+  (if (and (> l 38) (<= l 44))	
+    (setq bth1 12	
+    )	
+  )	
+  (if (and (> l 44) (<= l 50))	
+    (setq bth1 14	
+    )	
+  )	
+  (if (and (> l 50) (<= l 58))	
+    (setq bth1 16	
+    )	
+  )	
+  (if (and (> l 58) (<= l 65))	
+    (setq bth1 18	
+    )	
+  )	
+  (if (and (> l 65) (<= l 75))	
+    (setq bth1 20	
+    )	
+  )	
+  (if (and (> l 75) (<= l 85))	
+    (setq bth1 22	
+    )	
+  )	
+  (if (> l 85)	
+    (setq bth1 24	
+    )	
+  )	
+
   
 (setq tsobi '( ;  d1  D     b   r   r1  
 	     ;nth     0   1     2   3   4
@@ -263,7 +263,7 @@
 	th15 (polar th14 g270 (/ bth1 2.0))
 	th16 (polar th15 g180 (/ bth1 2.0))
 	th17 (polar th15 g0 (/ bth1 2.0))
-	
+
 	th20 (polar tr2 g270 (* 0.1 (- bbrn 2.0)))
 	th21 (polar th20 g270 (/ bth2 2.0))
 	th22 (polar th21 g180 (/ bth2 2.0))
@@ -313,7 +313,6 @@
 ;(command "arc" th3 th1 th4 "")
 (command "arc" th13 th10 th12 "")
 (command "arc" th17 th14 th16 "")
-
 
 (command "line" th22 th26 "")
 (ssadd (entlast) cv)
@@ -755,7 +754,7 @@
 (setq	
 	 n1  (polar tr0 g90 20)
 	 n2 (polar n1 g0 d3)
-	 n02 (polar n1 g0 (- d3 3.0))
+	 n02 (polar n1 g0 (- d3 5.0))
 	 
 	 n3 (polar n2 g90 1)
 	 n03 (polar n02 g90 1)
@@ -840,15 +839,15 @@
   (command "fillet" "r" "10" "")
   (command "fillet" "p" "l" "")
   (ssadd (entlast) nt)
-  (command "pline" n14 n1 "")
-  (ssadd (entlast) nt)
+  ;(command "pline" n14 n1 "")
+  ;(ssadd (entlast) nt)
 
   (setq nt1 (ss-mirror nt n1 n14 1))	; nhom chon 1
 
 
   (command "-layer" "m" "_mss.cat1" "")
-  (command "-hatch" "s" nt1 "" "p" "ansi31" 2 90 "")
-  (command "-hatch" "s" nt "" "p" "ansi31" 2 90 "")
+  (command "-hatch" "s" nt1 "" "p" "ansi31" 1 90 "")
+  (command "-hatch" "s" nt "" "p" "ansi31" 1 90 "")
 
 
 
@@ -953,7 +952,7 @@
 	 
 	 vm30 (polar vm28 g180 42) ;vm7
 	 vm31 (polar vm27 g0 15) ;vm4
-	 vm32 (polar vm28 g270 10) ;vm10
+	 vm32 (polar vm28 g270 (* 6.0 3.0)) ;vm10
 	 
 	 
 	 vm33 (polar vm32 g0 7) ;vm12
@@ -1009,7 +1008,7 @@
   (setq mb17 (ss-mirror mb15 pc1 pc2 1))
   (setq mb18 (ss-mirror mb16 pc1 pc2 1))
   
-  
+  (command "-hatch" "s" mb4 "" "p" "ansi31" 0.5 90 "")
   (command "-hatch" "s" mb18 "" "p" "ansi31" 0.5 90 "")
   (command "-layer" "m" "_mss.cat1" "")
   (command "-hatch" "s" mb1 mb4 mb12 mb9"" "p" "ansi31" 0.005 90 "")
@@ -1052,7 +1051,7 @@
 (setq	
 	 n1  (polar vb2 g270 20)
 	 n2 (polar n1 g0 d3)
-	 n02 (polar n1 g0 (- d3 3.0))
+	 n02 (polar n1 g0 (- d3 5.0))
 	 
 	 n3 (polar n2 g270 1)
 	 n03 (polar n02 g270 1)
@@ -1141,8 +1140,8 @@
 
 
   (command "-layer" "m" "_mss.cat1" "")
-  (command "-hatch" "s" nt1 "" "p" "ansi31" 2 90 "")
-  (command "-hatch" "s" nt "" "p" "ansi31" 2 90 "")
+  (command "-hatch" "s" nt1 "" "p" "ansi31" 1 90 "")
+  (command "-hatch" "s" nt "" "p" "ansi31" 1 90 "")
   
   (command "-hatch" "s" nt2 "" "p" "ansi37" 0.2 90 "")
   (command "-hatch" "s" nt3 "" "p" "ansi37" 0.2 90 "")
@@ -1184,9 +1183,87 @@
   
   ;pc1 (polar tr0 g270 (/ (distance tr0 tr5) 2.0))
   
+  ;; Ve bac
+  (command "-layer" "m" "_mss.bao" "")
+  (setq ba1 (polar nd15 g270 9)
+		ba2 (polar ba1 g180 2.5)
+		ba3 (polar ba2 g90 30)
+		ba4 (polar ba1 g90 30)
+	)
+	(setq bac1 (ssadd))
+	(command "line" ba2 ba1 "")
+	(ssadd (entlast) bac1)
+	(command "line" ba1 ba4 "")
+	(ssadd (entlast) bac1)
+	(command "line" ba4 ba3 "")
+	(ssadd (entlast) bac1)
+	(command "line" ba3 ba2 "")
+	(ssadd (entlast) bac1)
+	
+	(setq bac2 (ss-mirror bac1 n1 n14 1))
+	
+	(command "-layer" "m" "_mss.cat1" "")
+	(command "-hatch" "s" bac1 "" "p" "ansi31" 1 90 "")
+    (command "-hatch" "s" bac2 "" "p" "ansi31" 1 90 "")
+  
   
   
 
+)
+
+(defun napday()
+(setq nday1 (polar tr6 g270 0)
+	nday2 (polar nday1 g0 (+ (/ dbd 2) 3))
+	nday3 (polar nday1 g0(/ (* 6 1.1) 2))
+	nday4 (polar nday2 g270 3)
+	nday5 (polar nday3 g270 3)
+	nday6 (polar nday1 g270 3)
+	nday7 (polar nday6 g0 3)
+	nday8 (polar nday6 g0 6)
+	nday9 (polar nday6 g270 6)
+	nday10 (polar nday7 g270 6)
+	nday11 (polar nday8 g270 6)
+	
+	nday12 (polar tr6 g0 3)
+	
+	nday13 (polar tr6 g0 (/ (* 6 0.8) 2))
+	nday14 (polar nday13 g270 3)
+	
+)
+(command "-layer" "m" "_mss.bao" "")
+(setq napday1 (ssadd))
+(command "line" nday2 nday3 "")
+(ssadd (entlast) napday1)
+(command "line" nday3 nday5 "")
+(ssadd (entlast) napday1)
+(command "line" nday5 nday4 "")
+(ssadd (entlast) napday1)
+(command "line" nday4 nday2 "")
+(ssadd (entlast) napday1)
+
+(setq napday2 (ss-mirror napday1 n1 n14 1))
+(command "-layer" "m" "_mss.cat1" "")
+(command "-hatch" "s" napday1 "" "p" "ansi31" 1 90 "")
+(command "-hatch" "s" napday2 "" "p" "ansi31" 1 90 "")
+
+(command "-layer" "m" "_mss.bao" "")
+(setq napday3 (ssadd))
+(command "line" nday6 nday8 "")
+(ssadd (entlast) napday3)
+(command "line" nday8 nday11 "")
+(ssadd (entlast) napday3)
+(command "line" nday11 nday9 "")
+(ssadd (entlast) napday3)
+(command "line" nday6 nday9 "")
+(ssadd (entlast) napday3)
+(command "line" nday7 nday10 "")
+(ssadd (entlast) napday3)
+(command "line" nday7 nday12 "")
+(ssadd (entlast) napday3)
+(command "line" nday13 nday14 "")
+(ssadd (entlast) napday3)
+
+(setq napday4 (ss-mirror napday3 n1 n14 1))
 )
 
 ;;;Ham ghi kich thuoc
@@ -1216,8 +1293,6 @@
   ;;; "ALIGN" ghi kich thuoc giua 2 diem kieu align
 )
 
-
-
 (defun c:aa ()
 ;(setq dbd  (getreal "duong kinh banh dai"))
  ;  (setq bbd (getreal "be rong banh dai"))
@@ -1230,9 +1305,9 @@
 	;(setq tobi (getreal "be rong"))
 	;(setq dobi  (getreal "duong kinh o bi"))
 	
-	(setq dbd 20)
-	(setq bbd 20)
-	(setq l 20)
+	(setq dbd 20
+	dphot (+ dbd 5.0))
+	(setq bbd  20)
 	(setq dbrn 30)
 	(setq bbrn 90)
 	(setq beta 20)
@@ -1240,8 +1315,8 @@
 	(setq z1 50)
 	;(setq tobi 20)
 	(setq dobi 30)
-	(setq dphot 25)
-	(setq d2 12)
+	;(setq dphot (+ dbd 5.0))
+	(setq d2 10)
 	
  (setq tr0 (getpoint"cho tam"))
   (khoitao)
@@ -1250,8 +1325,7 @@
   (brn)
   (vongbi)
   (napo)
-  ;(setq p1 vm37)
-  ;(setq p2 vm25)
-  ;(setq p3 tr2)
   (ghikichthuoc vm37 vm25 tr2)
+  (napday)
 )
+
