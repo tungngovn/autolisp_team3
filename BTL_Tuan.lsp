@@ -101,7 +101,7 @@
    
 
 
-
+;; Chon then banh rang nghieng
   (if (and (> dbrn 12) (<= dbrn 17))
     (setq bth2 5
     )
@@ -146,6 +146,54 @@
     (setq bth2 24
     )
   )
+  
+  
+  ;; Chon then banh dai
+  (if (and (> l 12) (<= l 17))
+    (setq bth1 5
+    )
+  )
+  (if (and (> l 17) (<= l 22))
+    (setq bth1 6
+    )
+  )
+  (if (and (> l 22) (<= l 30))
+    (setq bth1 8
+    )
+  )
+  (if (and (> l 30) (<= l 38))
+    (setq bth1 10
+    )
+  )
+  (if (and (> l 38) (<= l 44))
+    (setq bth1 12
+    )
+  )
+  (if (and (> l 44) (<= l 50))
+    (setq bth1 14
+    )
+  )
+  (if (and (> l 50) (<= l 58))
+    (setq bth1 16
+    )
+  )
+  (if (and (> l 58) (<= l 65))
+    (setq bth1 18
+    )
+  )
+  (if (and (> l 65) (<= l 75))
+    (setq bth1 20
+    )
+  )
+  (if (and (> l 75) (<= l 85))
+    (setq bth1 22
+    )
+  )
+  (if (> l 85)
+    (setq bth1 24
+    )
+  )
+  
 (setq tsobi '( ;  d1  D     b   r   r1  
 	     ;nth     0   1     2   3   4
 		      (20 52 15 2 1)
@@ -205,14 +253,23 @@
        ; th22 (polar th7 g90 (/ bbrt 5.0))
         ;th23 (polar th8 g90 (/ bbrt 5.0))
 
-	th10 (polar tr2 g270 (* 0.1 (- bbrn 2.0)))
-	th11 (polar th10 g270 (/ bth2 2.0))
-	th12 (polar th11 g180 (/ bth2 2.0))
-	th13 (polar th11 g0 (/ bth2 2.0))
-	th14 (polar tr3 g90 (* 0.1 (- bbrn 2.0)))
-	th15 (polar th14 g90 (/ bth2 2.0))
-	th16 (polar th15 g180 (/ bth2 2.0))
-	th17 (polar th15 g0 (/ bth2 2.0))
+	th10 (polar tr6 g90 (* 0.1 (- l 2.0)))
+	th11 (polar th10 g90 (/ bth1 2.0))
+	th12 (polar th11 g180 (/ bth1 2.0))
+	th13 (polar th11 g0 (/ bth1 2.0))
+	th14 (polar tr5 g270 (* 0.1 (- l 2.0)))
+	th15 (polar th14 g270 (/ bth1 2.0))
+	th16 (polar th15 g180 (/ bth1 2.0))
+	th17 (polar th15 g0 (/ bth1 2.0))
+	
+	th20 (polar tr2 g270 (* 0.1 (- bbrn 2.0)))
+	th21 (polar th20 g270 (/ bth2 2.0))
+	th22 (polar th21 g180 (/ bth2 2.0))
+	th23 (polar th21 g0 (/ bth2 2.0))
+	th24 (polar tr3 g90 (* 0.1 (- bbrn 2.0)))
+	th25 (polar th24 g90 (/ bth2 2.0))
+	th26 (polar th25 g180 (/ bth2 2.0))
+	th27 (polar th25 g0 (/ bth2 2.0))
 	
 	;pc1 (polar tr0 g270 (/ (distance tr0 tr5) 2.0))
 	;pc2 (polar pc1 g0 88)
@@ -254,6 +311,14 @@
 ;(command "arc" th3 th1 th4 "")
 (command "arc" th13 th10 th12 "")
 (command "arc" th17 th14 th16 "")
+
+
+(command "line" th22 th26 "")
+(ssadd (entlast) cv)
+(command "line" th23 th27 "")
+(ssadd (entlast) cv)
+(command "arc" th23 th20 th22 "")
+(command "arc" th27 th24 th26 "")
 
 (setq cv1 (ss-mirror cv tr0 tr6 1))
 (command "-layer" "m"	"_mss.tam" "" "")
@@ -1137,7 +1202,8 @@
 	;(setq dobi  (getreal "duong kinh o bi"))
 	
 	(setq dbd 20)
-	(setq bbd  20)
+	(setq bbd 20)
+	(setq l 20)
 	(setq dbrn 30)
 	(setq bbrn 90)
 	(setq beta 20)
