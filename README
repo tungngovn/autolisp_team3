@@ -10,7 +10,8 @@ Vẽ trục:
 + bbd: độ dày bánh đai
 + bbrn: độ dày bánh răng nghiêng
 + tobi: độ dày ổ bi
-+ A : Thiet dien day dai ----> d Duowng kinh tonh toan banh dai
++ A : Thiet dien day dai 
++ d: Duowng kinh toan banh dai
 + Z: So Dai
 
 - Parameters:
