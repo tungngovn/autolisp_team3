@@ -3,7 +3,7 @@
 
 Vẽ trục:
 - Input: 
-+ dbd: đường kính bánh đai
++ dbd: đường kính trong bánh đai
 + dbrn: đường kính bánh răng nghiêng
 + tsobi: mảng các kích thước ổ bi có thể được chọn bảng P2.12 pg.264 sách tập 1
 + dobi: đường kính ổ bi
