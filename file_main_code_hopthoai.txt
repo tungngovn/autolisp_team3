@@ -1,0 +1,220 @@
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Hop Thoai <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<;;
+;; can bo sung them cac thong so cua banh dai (duong kinh banh dai, be rong banh dai, so dai, tiet dien dai)   
+
+(defun tshopthoai ()
+  (setq dcl_id (load_dialog "hopthoainhom3.dcl"))
+  (if (not (new_dialog "Nhom3" dcl_id))
+    (progn
+      (alert
+	"Khong Load duoc hop thoai"
+      )
+      (exit)
+    )
+  )              ;; Nap du lieu vao de nguoi dung chon lua
+
+;; cac gia tri ma khi click vao giao dien, no se hien ra 
+(setq listdobi  '("20.0"    "25.0"    "30.0"    "35.0"      
+		  "40.0"    "45.0"    "50.0"    "60.0"
+		  "65.0"    "70.0"    "90.0"    "100.0"    "150.0"
+	         )     // 20
+)
+
+
+
+(setq listdbrn  '("20.0"    "25.0"    "30.0"    "35.0"      
+		  "40.0"    "45.0"    "50.0"    "60.0"
+		  "65.0"    "70.0"    "90.0"    "100.0"    "150.0"
+	         )      // 40
+)
+
+(setq listbbrn  '(    "20.0"    "30.0"	"40.0"	  "50.0"
+		  "60.0"    "70.0"    "80.0"	"90.0"	  "100.0"
+		  "110.0" "120"
+		 )  //90
+)
+
+
+
+(setq	listz1	'("17.0"    "20.0"    "25.0"	"30.0"	  "35.0"
+		  "40.0"    "45.0"    "50.0"	"55.0"	  "60.0"
+		 )   //50
+  )
+  (setq	listm	'("1.25" "1.5" "2.0" "2.5" "3.0" "4.0" "5.0" "6.0" "8.0"
+		  "10.0" "12.0")  //2 
+  )
+  (setq	listbeta '("8.0"     "9.0"	"10.0"	  "11.0"    "12.0"
+		    "14.0"    "15.0"	"16.0"	  "17.0"    "18.0"
+		    "19.0"    "20.0"
+		   )   //20
+  ) 
+
+  // DANH SACH CAC BIEN CUA BANH DAI THANG
+ ;; danh sach duong kinh  banh dai// dbd
+  (setq listdbd '("10" "20" "30" "40")
+  )
+ ;; danh sach be rong banh dai // bbd
+ (setq listbbd '("10" "20" "30" "40")
+ )
+ ;; danh sach tiet dien dai // A
+ ;; (setq listA '("10" "20" "30" "40")
+ ;; )
+;; danh sach so dai //Z 
+ ;; (setq listZ '("10" "20" "30" "40")
+ ;;)
+   (upDateImage "anh_nhom3.sld" "anh_nhom3")
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> NHAP DU LIEU CHO DCL <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<;;
+
+;; NHAP DU LIEU CHO BANH DAI THANG
+(start_list "dbd") 
+  (mapcar 'add_list listdbd)
+  (end_list)
+  // gan gia tri mac dinh hien thi la gia tri thu nhat
+  (set_tile "dbd" "1")
+  
+  (start_list "bbd")
+  (mapcar 'add_list listbbd)
+  (end_list)
+  (set_tile "bbd" "1")
+  
+  ;;(start_list "A")
+  ;;(mapcar 'add_list listA)
+  ;;(end_list)
+  ;;(set_tile "A" "1")
+  
+ ;; (start_list "Z")
+  ;;(mapcar 'add_list listZ)
+  ;;(end_list)
+  ;;(set_tile "Z" "1")
+
+(start_list "dobi")
+  (mapcar 'add_list listdobi)
+  (end_list)
+  (set_tile "dobi" "2")
+
+
+(start_list "dbrn")
+  (mapcar 'add_list listdbrn)
+  (end_list)
+  (set_tile "dbrn" "3")
+
+
+(start_list "bbrn")
+  (mapcar 'add_list listbbrn)
+  (end_list)
+  (set_tile "bbrn" "4")
+
+
+  (start_list "z1")
+  (mapcar 'add_list listz1)
+  (end_list)
+  (set_tile "z1" "4")
+
+  (start_list "m")
+  (mapcar 'add_list listm)
+  (end_list)
+  (set_tile "m" "4")
+
+  (start_list "beta")
+  (mapcar 'add_list listbeta)
+  (end_list)
+  (set_tile "beta" "5")
+
+ 
+;;;nut bam ok va cancel
+(action_tile "accept" "(setq ddig 2) (laykq) (done_dialog)")
+(action_tile "cancel" "(setq ddiag 1) (exit) (done_dialog)")
+(start_dialog)
+)
+;;Chen anh vao DCL
+
+  
+(defun upDateImage(sldName anh) 
+	;;;--- Get the width of the slide (L?y ð?r?ngc?ah?nh ?nh) 
+	(setq width (dimx_tile anh))
+	;;;--- Get the height of the slide (L?y ð? cao c?ah?nh ?nh)
+	(setq height (dimy_tile anh)) 
+	;;;--- Start the slide definition (B?t ð?u ð?nh ngh?a ?nh slide)
+	(start_image anh)
+	;;;--- Wipe out the background (Xóas?ch n?n)
+	;; (fill_image 0 0 width height -16)
+	;;;--- Put the slide in the image area  (Ð?t ?nh Slidevào vùng ?nh)
+	(slide_image 0 0 width height sldName)
+	;;;--- Finish the slide definition (K?t thúc ð?nh ngh?a ?nh slide)
+	(end_image)
+)
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> LAY KET QUA TU HOP THOAI <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<;;
+
+(defun laykq ()
+
+;; KET QUA DUONG KINH OBI
+  (setq dobi (get_tile "dobi"))               
+        (if (= dobi "")
+            (setq gan1 nil)
+            (setq gan1 (nth (atoi dobi) listdobi))
+        )
+  
+  (setq dobi1 (atof gan1))
+ 
+
+
+;; KET QUA BANH RANG NGHIENG
+  (setq dbrn (get_tile "dbrn"))               
+        (if (= dbrn "")
+            (setq gan2 nil)
+            (setq gan2 (nth (atoi dbrn) listdbrn))
+        )
+
+
+  (setq bbrn (get_tile "bbrn"))            
+        (if (= bbrn "")
+	    (setq gan3 nil)
+	    (setq gan3 (nth (atoi bbrn) listbbrn))
+	)
+ (setq z1 (get_tile "z1"))               
+        (if (= z1 "")
+            (setq gan4 nil)
+            (setq gan4 (nth (atoi z1) listz1))
+        )
+  
+  
+   (setq m (get_tile "m"))            
+        (if (= m "")
+	    (setq gan5 nil)
+	    (setq gan5 (nth (atoi m) listm))
+	)
+
+
+   (setq beta (get_tile "beta"))         
+        (if (= beta "")
+	    (setq gan6 nil)
+	    (setq gan6 (nth (atoi beta) listbeta))
+	)
+
+   
+  (setq z11 (atof gan4))             
+  (setq m1 (atof gan5))
+  (setq beta1 (angtof gan6))
+  
+  (setq dbrn1 (atof gan2))
+  (setq bbrn1 (atof gan3))
+
+ 
+;; KET QUA BANH DAI THANG
+  
+   (setq dbd (get_tile "dbd"))           
+        (if (= dbd "")
+	    (setq gan7 nil)
+	    (setq gan7 (nth (atoi dbd) listdbd))
+	)
+
+
+   (setq bbd (get_tile "bbd"))            
+        (if (= bbd "")
+	    (setq gan8 nil)
+	    (setq gan8 (nth (atoi bbd) listbbd))
+	)
+            
+  (setq dbd1 (atof gan7))             
+  (setq bbd1 (atof gan8))
+)
+ 
