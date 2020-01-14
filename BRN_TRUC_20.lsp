@@ -149,47 +149,47 @@
   
 ;; Chon then banh dai thang
 
-(if (and (> l 12) (<= l 17))	
+(if (and (> Lmo 12) (<= Lmo 17))	
     (setq bth1 5	
     )	
   )	
-  (if (and (> l 17) (<= l 22))	
+  (if (and (> Lmo 17) (<= Lmo 22))	
     (setq bth1 6	
     )	
   )	
-  (if (and (> l 22) (<= l 30))	
+  (if (and (> Lmo 22) (<= Lmo 30))	
     (setq bth1 8	
     )	
   )	
-  (if (and (> l 30) (<= l 38))	
+  (if (and (> Lmo 30) (<= Lmo 38))	
     (setq bth1 10	
     )	
   )	
-  (if (and (> l 38) (<= l 44))	
+  (if (and (> Lmo 38) (<= Lmo 44))	
     (setq bth1 12	
     )	
   )	
-  (if (and (> l 44) (<= l 50))	
+  (if (and (> Lmo 44) (<= Lmo 50))	
     (setq bth1 14	
     )	
   )	
-  (if (and (> l 50) (<= l 58))	
+  (if (and (> Lmo 50) (<= Lmo 58))	
     (setq bth1 16	
     )	
   )	
-  (if (and (> l 58) (<= l 65))	
+  (if (and (> Lmo 58) (<= Lmo 65))	
     (setq bth1 18	
     )	
   )	
-  (if (and (> l 65) (<= l 75))	
+  (if (and (> Lmo 65) (<= Lmo 75))	
     (setq bth1 20	
     )	
   )	
-  (if (and (> l 75) (<= l 85))	
+  (if (and (> Lmo 75) (<= Lmo 85))	
     (setq bth1 22	
     )	
   )	
-  (if (> l 85)	
+  (if (> Lmo 85)	
     (setq bth1 24	
     )	
   )	
@@ -253,11 +253,11 @@
        ; th22 (polar th7 g90 (/ bbrt 5.0))
         ;th23 (polar th8 g90 (/ bbrt 5.0))
 
-	th10 (polar tr6 g90 (* 0.1 (- l 2.0)))
+	th10 (polar tr6 g90 (* 0.1 (- Lmo 2.0)))
 	th11 (polar th10 g90 (/ bth1 2.0))
 	th12 (polar th11 g180 (/ bth1 2.0))
 	th13 (polar th11 g0 (/ bth1 2.0))
-	th14 (polar tr5 g270 (* 0.1 (- l 2.0)))
+	th14 (polar tr5 g270 (* 0.1 (- Lmo 2.0)))
 	th15 (polar th14 g270 (/ bth1 2.0))
 	th16 (polar th15 g180 (/ bth1 2.0))
 	th17 (polar th15 g0 (/ bth1 2.0))
@@ -1497,10 +1497,6 @@
   (command ".line"  q5tt q21tt "")
   (ssadd (entlast) net5)
 
-
-  
- 
-
   ; Lay doi xung toan bo phan ben phai
   
  (setq dx (ss-mirror net tr0 tr6 1))
@@ -1523,15 +1519,6 @@
 
   
   ) ; dau ngoac het chuong trinh lon
-
-
-
-
-
-
-
-
-
 
 
 (defun c:aa ()
@@ -1565,9 +1552,6 @@
   	(setq e 8.0)
   	(setq z 3)
   	(setq b1 10.1)
-
-
-
 	
  (setq tr0 (getpoint"cho tam"))
   (khoitao)
