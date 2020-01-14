@@ -5,8 +5,8 @@
 
 (setq   g0 0.0
 
-	g30  (/ pi 6)
-	g15 (/ g30 2)
+		g30  (/ pi 6)
+		g15 (/ g30 2)
         g45 (* 0.25 pi)
         g90 (* 2.0 g45)
 	g135 (* 3.0 g45)
@@ -76,9 +76,226 @@
   ss1					;ket qua tra ve
 )					;defun
 ;;;
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Hop Thoai <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<;;
+   
+
+(defun tshopthoai ()
+  (setq dcl_id (load_dialog "hopthoainhomba.dcl"))
+  (if (not (new_dialog "Nhom3" dcl_id))
+    (progn
+      (alert
+	"Khong Load duoc hop thoai"
+      )
+      (exit)
+    )
+  )              ;; Nap du lieu vao de nguoi dung chon lua
+
+;; cac gia tri ma khi click vao giao dien, no se hien ra 
+
+(setq listdobi  '("20.0"    "25.0"    "30.0"    "35.0"      
+		  "40.0"    "45.0"    "50.0"    "60.0"
+		  "65.0"    "70.0"    "90.0"    "100.0"    "150.0"
+	         )
+)
+
+
+
+(setq listdbrn  '("20.0"    "25.0"    "30.0"    "35.0"      
+		  "40.0"    "45.0"    "50.0"    "60.0"
+		  "65.0"    "70.0"    "90.0"    "100.0"    "150.0"
+	         )
+)
+
+(setq listbbrn  '(    "20.0"    "30.0"	"40.0"	  "50.0"
+		  "60.0"    "70.0"    "80.0"	"90.0"	  "100.0"
+		  "110.0" "120"
+		 )
+)
+
+(setq listdbd  '("20.0"    "25.0"    "30.0"    "35.0"      
+		  "40.0"    "45.0"    "50.0"    "60.0"
+		  "65.0"    "70.0"    "90.0"    "100.0"    "150.0"
+	         )
+)
+
+(setq listbbd  '(   "20.0"	"40.0"	  "50.0"
+		  "60.0"    "70.0"    "80.0"	"90.0"	  "100.0"
+		  "110.0"  "120" "125"
+		 )
+)
+
+(setq	listz1	'("17.0"    "20.0"    "25.0"	"30.0"	  "35.0"
+		  "40.0"    "45.0"    "50.0"	"55.0"	  "60.0"
+		 )
+  )
+  (setq	listm	'("1.25" "1.5" "2.0" "2.5" "3.0" "4.0" "5.0" "6.0" "8.0"
+		  "10.0" "12.0")
+  )
+  (setq	listbeta '("8.0"     "9.0"	"10.0"	  "11.0"    "12.0"
+		    "14.0"    "15.0"	"16.0"	  "17.0"    "18.0"
+		    "19.0"    "20.0"
+		   )
+  )
+ 
+   
+   (upDateImage "anh_nhom3.sld" "anh")
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> NHAP DU LIEU CHO DCL <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<;;
+;; hien thi tren giao dien
+
+;; duong kinh banh dai
+(start_list "dbd")
+  (mapcar 'add_list listdbd)
+  (end_list)
+  (set_tile "dbd" "1")
+  
+;; be rong banh dai
+  (start_list "bbd")
+  (mapcar 'add_list listbbd)
+  (end_list)
+  (set_tile "bbd" "1")
+  ;; duong kinh o bi
+(start_list "dobi")
+  (mapcar 'add_list listdobi)
+  (end_list)
+  (set_tile "dobi" "2")
+  ;; module
+  (start_list "m")
+  (mapcar 'add_list listm)
+  (end_list)
+  (set_tile "m" "2")
+
+;; duong kinh banh rang nghieng
+(start_list "dbrn")
+  (mapcar 'add_list listdbrn)
+  (end_list)
+  (set_tile "dbrn" "3")
+;; be rong banh rang nghieng
+(start_list "bbrn")
+  (mapcar 'add_list listbbrn)
+  (end_list)
+  (set_tile "bbrn" "4")
+;; so rang banh rang nghieng
+  (start_list "z1")
+  (mapcar 'add_list listz1)
+  (end_list)
+  (set_tile "z1" "1")
+;; goc nghieng
+  (start_list "beta")
+  (mapcar 'add_list listbeta)
+  (end_list)
+  (set_tile "beta" "1")
+
+;;;nut bam ok va cancel
+(action_tile "accept" "(setq ddig 2) (laykq)  (done_dialog)")
+(action_tile "cancel" "(setq ddiag 1) (exit) (done_dialog)")
+(start_dialog)
+
+)
+;;Chen anh vao DCL
+
+  
+(defun upDateImage(sldName anh) 
+	;;;--- Get the width of the slide (L?y ð?r?ngc?ah?nh ?nh) 
+	(setq width (dimx_tile anh))
+	;;;--- Get the height of the slide (L?y ð? cao c?ah?nh ?nh)
+	(setq height (dimy_tile anh)) 
+	;;;--- Start the slide definition (B?t ð?u ð?nh ngh?a ?nh slide)
+	(start_image anh)
+	;;;--- Wipe out the background (Xóas?ch n?n)
+	;; (fill_image 0 0 width height -16)
+	;;;--- Put the slide in the image area  (Ð?t ?nh Slidevào vùng ?nh)
+	(slide_image 0 0 width height sldName)
+	;;;--- Finish the slide definition (K?t thúc ð?nh ngh?a ?nh slide)
+	(end_image)
+)
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> LAY KET QUA TU HOP THOAI <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<;;
+
+(defun laykq ()
+;; KET QUA DUONG KINH BANH DAI
+;; dk banh dai
+  (setq dbd (get_tile "dbd"))               
+        (if (= dbd "")
+            (setq gan1 nil)
+            (setq gan1 (nth (atoi dbd) listdbd))
+        )
+  
+  (setq dbd1 (atof gan1))
+ ;; be rong banh dai 
+  (setq bbd (get_tile "bbd"))               
+        (if (= bbd "")
+            (setq gan2 nil)
+            (setq gan2 (nth (atoi bbd) listbbd))
+        )
+  
+  (setq bbd1 (atof gan2))
+;; KET QUA DUONG KINH OBI
+  (setq dobi (get_tile "dobi"))               
+        (if (= dobi "")
+            (setq gan3 nil)
+            (setq gan3 (nth (atoi dobi) listdobi))
+        )
+  
+  (setq dobi1 (atof gan3))
+ 
+
+
+;; KET QUA BANH RANG NGHIENG
+  (setq dbrn (get_tile "dbrn"))               
+        (if (= dbrn "")
+            (setq gan11 nil)
+            (setq gan11 (nth (atoi dbrn) listdbrn))
+        )
+
+
+  (setq bbrn (get_tile "bbrn"))            
+        (if (= bbrn "")
+	    (setq gan21 nil)
+	    (setq gan21 (nth (atoi bbrn) listbbrn))
+	)
+ (setq z1 (get_tile "z1"))               
+        (if (= z1 "")
+            (setq gan111 nil)
+            (setq gan111 (nth (atoi z1) listz1))
+        )
+		   
+  (setq z11 (atof gan111)) 
+  
+  
+   (setq m (get_tile "m"))            
+        (if (= m "")
+	    (setq gan4 nil)
+	    (setq gan4 (nth (atoi mbr) listm))
+	)
+  (setq m1 (atof gan4))
+
+   (setq beta (get_tile "beta"))         
+        (if (= beta "")
+	    (setq gan311 nil)
+	    (setq gan311 (nth (atoi betar) listbeta))
+	)
+ (setq beta1 (angtof gan311))
+            
+
+ 
+  
+  (setq dbrn1 (atof gan11))
+  (setq bbrn1 (atof gan21))
+
+ 
+;; KET QUA BANH RANG THANG
+    
+)
+  
 (defun tinhtoan	()
 
-
+  (setq dbd dbd1)
+  (setq bbd bbd1)
+  (setq dobi dobi1)
+  (setq dbrn dbrn1)
+  (setq bbrn bbrn1)
+  (setq beta beta1)
+(setq m m1)
+(setq z1 z11)
   
   
   ;; THONG SO BANH RANG NGHIENG
@@ -146,6 +363,7 @@
     (setq bth2 24
     )
   )
+  ;cac thong so cua o bi do chan co chung 463xx
 (setq tsobi '( ;  d1  D     b   r   r1  
 	     ;nth     0   1     2   3   4
 		      (20 52 15 2 1)
@@ -349,7 +567,7 @@
 ;;;; ve banh rang trong
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Ve vong bi tren;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Ve vong bi tren;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun vongbi (/ dt b r r1)
 
 (setq item (assoc dobi tsobi)) 
@@ -360,7 +578,8 @@
       r  (nth 3 item)
       r1 (nth 4 item)  )
   ;(setq dt 65 dn 140 b 33 r 3.5 r1 2.0 h 37.5)
-  (setq h (/ (- dn dt) 2.0))
+  (setq h (/ (- dn dt) 2.0)) ;h= (dn-dt)/2;
+  
   (setq vb1 tr0
 	vb2 ( polar vb1  g270 b)
 	vb3 ( polar vb2  g0   (/ dt 2.0))
@@ -400,7 +619,7 @@
   (command ".chamfer" "d" r r "")
   (command "chamfer" "p" "l")
   (ssadd (entlast) vb)
-  (command "pline" vb3 vb8 "");;;;;;;;;;;;;;; X�a VB2
+  (command "pline" vb3 vb8 "");;;;;;;;;;;;;;; Xóa VB2
   (ssadd (entlast) vb)
   (command "pline" vb8 vb4 vb10 "")
   (command ".chamfer" "d" r1 r "")
@@ -501,7 +720,7 @@
   
   (ss-mirror cdt cdt1 cdt2 1)
   (ss-mirror cdtt cdt1 cdt2 1)
-;/////////////;;;;;;;;;;;;;;;;;;;;;;;;;;;;;/VE Vong bi phia duoi;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;/VE Vong bi phia duoi;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;////////////
 
   ;(setq dt 65 dn 140 b 33 r 3.5 r1 2.0 h 37.5)
@@ -547,7 +766,7 @@
   (command ".chamfer" "d" r r "")
   (command "chamfer" "p" "l")
   (ssadd (entlast) vb)
-  (command "pline" vb3 vb8 "");;;;;;;;;;;;;;; X�a VB2
+  (command "pline" vb3 vb8 "");;;;;;;;;;;;;;; Xóa VB2
   (ssadd (entlast) vb)
   (command "pline" vb8 vb4 vb10 "")
   (command ".chamfer" "d" r r "")
@@ -1116,120 +1335,11 @@
   (setq ss4 (ss-mirror ss2 n1 n14 1))
   
   ;pc1 (polar tr0 g270 (/ (distance tr0 tr5) 2.0))
-   
+  
+  
+  
 
 )
-
-
-
-
-
-(defun banhdaithang()
-
-(setq q1 (polar tr6 g270 2.5)
-      q1d (polar q1 g270 3.5); set diem cang ngang duoi
-      q2b (polar q1d g90 b); q nay so voi q1d co chieu rong B
-      q2 (polar q1 g0 (/ dbd 2))
-      q3 (polar q2 g0 (- (/ dmo 2) (/ dbd 2)))
-      q4 (polar q3 g90 3.5)
-      q5 (polar q4 g0 6)
-      ; set q tam lo tron
-      q5t (polar q5 g0 15)
-      q5tt(polar q5t g270 3.5)
-      q6 (polar q5 g0 30)
-      q7 (polar q6 g0 8)
-      q8 (polar q7 (/ (* 280 pi) 180) 7)
-      q9 (polar q8 g0 5)
-      q10 (polar q9 g90 2)
-      q11 (polar q10 (/ (* 162 pi) 180) 3)
-      q12 (polar q11 g90 3)
-      q13 (polar q12 (/ (* 18 pi) 180) 3)
-      q14 (polar q13 g90 2)
-      q15 (polar q14 (/ (* 162 pi) 180) 3)
-      ; set diem ve duong tam
-      
- 
- )
-  
-  (command "-layer" "m" "_mss.bao" "")
-  ; Line banhthangdai
-  (setq net (ssadd))
-  (command ".pline" q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11  "")
-   (ssadd (entlast) net)
-  (command ".pline"  q11 q12 q13 q14 q15 "")
-  (ssadd (entlast) net)
-  (setq dx1 (ss-mirror net tr0 tr6 1))
-  
-  
-
-  ; Repeat theo so dai
-
-(repeat (- z 2) ; so lan lap
-  
-(setq q11 (polar q15 g0 0)
-        q12 (polar q11 g90 3)
-	q13 (polar q12 (/ (* 18 pi) 180) 3)
-        q14 (polar q13 g90 2)
-        q15 (polar q14 (/ (* 162 pi) 180) 3)    
-	)
-(setq net1 (ssadd)) 
-(command ".pline"   q11 q12 q13 q14 q15 "")
- (ssadd (entlast) net1)
-(setq dx2 (ss-mirror net1 tr0 tr6 1))
-  
-)
-
-  
-  ; ve doan rang con lai sau khi Repeat
-(setq q16 (polar q15 g90 3)
-	q17 (polar q16 (/ (* 18 pi) 180) 3)
-	q18 (polar q17 g90 2)
-	q19 (polar q18 g180 5)
-	q20 (polar q19 (/ (* 260 pi) 180) 7)
-        q21 (polar q20 g180 8)
-      ; set q21t de ve truc duong tron
-      q21t (polar q21 g180 15)
-      q21tt(polar q21t g90 3.5)
-      q22 (polar q21 g180 30)
-      q23 (polar q22 g180 6)
-      q24 (polar q23 g90 5.5)
-      q25 (polar q24 g180 (- (/ dmo 2) (/ dbd 2)))
-      ; set q26 de noi duong cang ngang tren
-      q26 (polar q2b g0 (/ dmo 2))
-      
-	)
-  
-  (setq net2 (ssadd))
-(command ".pline"  q15 q16 q17 q18 q19 q20 q21 q22 q23 q24 q25 q2 "")
-  (ssadd (entlast) net2)
-(command ".line"  q1d q8 "") ; Ve duong cang ngang duoi
-  (ssadd (entlast) net2)
-  (command ".line"  q26 q18 ""); ve duong cang ngang tren
-  (ssadd (entlast) net2)
-  ; ve 2 duong vong tam
-  (command ".line"  q6 q21 "")
-  (ssadd (entlast) net2)
-  (command ".line"  q5 q22 "")
-  (ssadd (entlast) net2)
-  (command "-layer" "m"	"_mss.tam" "c" 1 "" "lt" "center" "" "")
-  ; Ve duong truc tron
-  (command ".line"  q5tt q21tt "")
-  (ssadd (entlast) net2)
- 
-
-  ; LAy doi xung toan bo phan ben phai
-  
-  (setq dx3 (ss-mirror net2 tr0 tr6 1))
-   ;(ss-mirror net1 tr0 tr6 1)
-
-  
-  
-
-  
-  ) ; dau ngoac het chuong trinh lon
-
-
-
 
 
 
@@ -1240,36 +1350,30 @@
   ; (setq bbrn (getreal "be rong banh rang nghieng"))
    ;  (setq beta (getreal "goc nghieng"))
    ; (setq m (getreal "modun ban rang"))
-  ; (setq z1 (getreal "so rang"))
+  ; (setq z1  (getreal "so rang"))
 ;
 	;(setq tobi (getreal "be rong"))
 	;(setq dobi  (getreal "duong kinh o bi"))
 	
-	(setq dbd 20)
-	(setq bbd  20)
-	(setq dbrn 30)
-	(setq bbrn 90)
-	(setq beta 20)
-	(setq m  2)
-	(setq z1 50)
-	;(setq tobi 20)
-	(setq dobi 30)
-	(setq dphot 25)
-	(setq d2 12)
-  	(setq dmo 35)
-  	(setq z 3)
-  	(setq b 23)
-  
-  
-  
-  
-	
- (setq tr0 (getpoint"cho tam"))
+	;;(setq dbd 20); duong kinh banh dai // a Son
+	;;(setq bbd  20); be rong banh dai   // a Son
+	;;(setq dbrn 30);; duong kinh banh rang nghieng
+	;;(setq bbrn 90);; be rong banh rang nghieng
+	;;(setq beta 20) ;; goc nghieng
+	;;(setq m  2)  ;;   modun banh rang
+	;;(setq z1 50) ;;   so rang
+;;	(setq tobi 20)
+	;;(setq dobi 30)    ;;duong kinh o bi
+	(setq dphot 25)   ; 
+	(setq d2 12)       ;
   (khoitao)
+  (setq tr0 (getpoint"cho tam"))
+  (tshopthoai)
   (tinhtoan)
   (truc)
   (brn)
   (vongbi)
   (napo)
-  (banhdaithang)
+  (princ)
+  (unload_dialog dcl)
 )
