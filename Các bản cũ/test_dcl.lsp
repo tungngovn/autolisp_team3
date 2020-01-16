@@ -101,21 +101,59 @@
 
   ; THONG SO BANH DAI THANG
 
-  (setq Da (+ d (* h0 2))); Duong kinh ngoai banh dai, d chon tu dk lam viec
+ 
+(if ( = A_1 47)	
+    (setq Hd 10
+     	  h0 2.5
+  	      t0 12.0
+  	      e 8.0
+		  b1 10.1
+    )
+)
+
+(if ( = A_1 81)	
+    (setq Hd 12.5
+     	  h0 3.3
+  	      t0 15.0
+  	      e 10.0
+		  b1 13.3
+    )  
+)
+
+(if ( = A_1 138)	
+    (setq Hd 16
+     	  h0 4.2
+  	      t0 19
+  	      e 12.5
+		  b1 17.2
+    )
+)
+(if ( = A_1 230)	
+    (setq Hd 21
+     	  h0 5.7
+  	      t0 25.2
+  	      e 17
+		  b1 22.9
+    )
+)
+
+
+
+ (setq Da (+ d (* h0 2.0))); Duong kinh ngoai banh dai, d chon tu dk lam viec
   			   ;Hoac chon theo tiet dien
 
-  (setq B (+ (* (- z 1) t0) (* 2 e))) ; Chieu rong banh dai
+  (setq B (+ (* (- z 1) t0) (* 2.0 e))) ; Chieu rong banh dai
   (setq Dmo (* 1.6 dbd)); Duong kinh Moayo  
   (setq Lmo (* 1.5 dbd)); Chieu dai Moayo
   
-  (setq Xma (+ (* 0.005 Da) 3)); Chieu day vanh
+  (setq Xma (+ (* 0.005 Da) 3.0)); Chieu day vanh
   (setq C (+ Xma (* 0.02 B)))
   ; Chieu day phan vanh chua dai
   (setq Lv (+ Hd Xma))
   
   
   
-  (setq v1 (- e (/ b1 2))) ; Do dai tu q9 ->q10
+  (setq v1 (- e (/ b1 2.0))) ; Do dai tu q9 ->q10
   
   (setq ln (/ Hd (cos (/ (* 18 pi) 180)))) ; Do dai nghieng dai
   
@@ -142,7 +180,7 @@
 
  ;| ; Khoang cach q4->q5
   (setq tg (* 0.1875 (- Da dbd))); Duong kinh lo tron bang 0,5*(Da-dbd)
-  (setq k1 (- tg (- (/ Dmo 2) (/ dbd 2)))) ; Khoang cach q4->q5
+  (setq k1 (- tg (- (/ Dmo 2.0) (/ dbd 2.0)))) ; Khoang cach q4->q5
   
   ; Do dai di ra 10 do tu q7->q8
   (setq lnr (/ (- (/ B 2) (/ C 2)) (cos (/ (* 10 pi) 180))))
@@ -208,6 +246,85 @@
     (setq bth2 24
     )
   )
+  
+    ;; Chon chieu dai then 2
+(if (and (> bbrn 10) (<= bbrn 12))	
+    (setq Lt2 10	
+    )	
+  )	
+  (if (and (> bbrn 12) (<= bbrn 14))	
+    (setq Lt2 12	
+    )	
+  )	
+  (if (and (> bbrn 14) (<= bbrn 16))	
+    (setq Lt2 14	
+    )	
+  )	
+  (if (and (> bbrn 16) (<= bbrn 18))	
+    (setq Lt2 16	
+    )	
+  )	
+  (if (and (> bbrn 18) (<= bbrn 20))	
+    (setq Lt2 18	
+    )	
+  )	
+  (if (and (> bbrn 20) (<= bbrn 22))	
+    (setq Lt2 20	
+    )	
+  )	
+  (if (and (> bbrn 22) (<= bbrn 25))	
+    (setq Lt2 22	
+    )	
+  )	
+  (if (and (> bbrn 25) (<= bbrn 28))	
+    (setq Lt2 25	
+    )	
+  )	
+  (if (and (> bbrn 28) (<= bbrn 32))	
+    (setq Lt2 28	
+    )	
+  )	
+  (if (and (> bbrn 32) (<= bbrn 36))	
+    (setq Lt2 32	
+    )	
+  )	
+  (if (and (> bbrn 36) (<= bbrn 40))	
+    (setq Lt2 36	
+    )	
+  )	
+  (if (and (> bbrn 40) (<= bbrn 45))	
+    (setq Lt2 40	
+    )	
+  )	
+  (if (and (> bbrn 45) (<= bbrn 50))	
+    (setq Lt2 45	
+    )	
+  )	
+  (if (and (> bbrn 50) (<= bbrn 56))	
+    (setq Lt2 50	
+    )	
+  )	
+  (if (and (> bbrn 56) (<= bbrn 63))	
+    (setq Lt2 56	
+    )	
+  )	
+  (if (and (> bbrn 63) (<= bbrn 70))	
+    (setq Lt2 63	
+    )	
+  )	
+  (if (and (> bbrn 70) (<= bbrn 80))	
+    (setq Lt2 70	
+    )	
+  )	
+  (if (and (> bbrn 80) (<= bbrn 90))	
+    (setq Lt2 80	
+    )	
+  )	
+  
+  (if (> bbrn 90)	
+    (setq Lt2 90	
+    )	
+  )	
   
 ;; Chon then banh dai thang
 
@@ -298,10 +415,43 @@
     (setq Lt1 32	
     )	
   )	
-  (if (> Lmo 36)	
+  (if (and (> Lmo 36) (<= Lmo 40))	
     (setq Lt1 36	
     )	
   )	
+  (if (and (> Lmo 40) (<= Lmo 45))	
+    (setq Lt1 40	
+    )	
+  )	
+  (if (and (> Lmo 45) (<= Lmo 50))	
+    (setq Lt1 45	
+    )	
+  )	
+  (if (and (> Lmo 50) (<= Lmo 56))	
+    (setq Lt1 50	
+    )	
+  )	
+  (if (and (> Lmo 56) (<= Lmo 63))	
+    (setq Lt1 56	
+    )	
+  )	
+  (if (and (> Lmo 63) (<= Lmo 70))	
+    (setq Lt1 63	
+    )	
+  )	
+  (if (and (> Lmo 70) (<= Lmo 80))	
+    (setq Lt1 70	
+    )	
+  )	
+  (if (and (> Lmo 80) (<= Lmo 90))	
+    (setq Lt1 80	
+    )	
+  )	
+  
+  (if (> Lmo 90)	
+    (setq Lt1 90	
+    )	
+  )		
   
 (setq tsobi '( ;  d1  D     b   r   r1  
 	     ;nth     0   1     2   3   4
@@ -325,15 +475,16 @@
 
 	(setq item (assoc dobi tsobi))   
     (setq tobi (nth 2 item))   
-
+     (setq  dvm1 (+ 6 (* d2 3)))		
+	(setq  dvx1 (+ (- dvm1 (* tobi 1.5)) 16.0))
   
   (setq 
 	tr1 (polar tr0 g270 (+ 4 (* tobi 2.0)))
 	tr2 (polar tr1 g270 (/ bbrn 4.0))
 	tr3 (polar tr2 g270 (- bbrn 1.0))
 	tr4 (polar tr3 g270 (+ (* tobi 2.0) 4.0))
-	tr5 (polar tr4 g270 (* bbd 2.0))
-	tr6 (polar tr5 g270 (* bbd 1.0))
+	tr5 (polar tr4 g270 dvx1);
+	tr6 (polar tr5 g270  Lmo )
 	tr7 (polar tr6 g90 1.0)
 	tr8 (polar tr0 g270 1.0)
 	tr9 (polar tr0 g0 (- (* 0.5 dobi) 1.0))
@@ -362,7 +513,7 @@
        ; th22 (polar th7 g90 (/ bbrt 5.0))
         ;th23 (polar th8 g90 (/ bbrt 5.0))
 
-	th10 (polar tr6 g90 (* 0.1 (- Lmo 2.0)))
+	th10 (polar tr6 g90 (* 0.05 (- Lmo 2.0)))
 	th11 (polar th10 g90 (/ bth1 2.0))
 	th12 (polar th11 g180 (/ bth1 2.0))
 	th13 (polar th11 g0 (/ bth1 2.0))
@@ -371,11 +522,11 @@
 	th16 (polar th15 g180 (/ bth1 2.0))
 	th17 (polar th15 g0 (/ bth1 2.0))
 
-	th20 (polar tr2 g270 (* 0.1 (- bbrn 2.0)))
+	th20 (polar tr2 g270 (* 0.05 (- bbrn 4.0)))
 	th21 (polar th20 g270 (/ bth2 2.0))
 	th22 (polar th21 g180 (/ bth2 2.0))
 	th23 (polar th21 g0 (/ bth2 2.0))
-	th24 (polar tr3 g90 (* 0.1 (- bbrn 2.0)))
+	th24 (polar th21 g270 (- Lt2 (/ bth2 2.0)))
 	th25 (polar th24 g90 (/ bth2 2.0))
 	th26 (polar th25 g180 (/ bth2 2.0))
 	th27 (polar th25 g0 (/ bth2 2.0))
@@ -806,7 +957,7 @@
        cdd15 (polar cdd14 g150 3)
        cdd16 (polar cdd1  g270 b)
        cdd17 (polar cdd7  g270 b)
-       cdd18 (polar cdd16 g0 (/ dbd 2))
+       cdd18 (polar cdd16 g0 (/ dbd 2.0))
        )
 ;;;;;;;;;;;
   (setq cdd (ssadd))
@@ -942,9 +1093,9 @@
 	 vm5 (polar vm3 g270 5)
 	 vm6 (polar vm5 g0 5)
 	 
-	 vm7 (polar vm5 g0 (+ (- dvm 15.0) (- (+ (/ (* m z1) 2.0) (* 6 5)) (/ dn 2.0))))
+	 vm7 (polar vm5 g0 ( + (- (- (+ (* Ddinh 0.5) dvm) (* 0.5 dn)) 15) 9))
 	 vm8 (polar vm4 g270 (+ 16 tobi))
-	 vm9 (polar vm37 g0 (- (+ (/ (* m z1) 2.0) (* 6 5)) (/ dn 2.0)))
+	 vm9 (polar vm37 g0 (- (- (+ (* Ddinh 0.5) 9) 0) (* 0.5 dn )))
 	 
 	 vm10 (polar vm5 g270 (* 6.0 3.0))
 	 vm11 (polar vm9 g0 (- dvm (* 6.0 3.0)))
@@ -961,8 +1112,8 @@
 	 
 	 pc1 (polar tr0 g270 (/ (distance tr0 vb2) 2.0))
 	 pc2 (polar pc1 g0 88)
-	 pc3 (polar pc1 g0 (+ dvm (+ (/ (* m z1) 2.0) (* 6 5))))
-	 pc4 (polar pc1 g0 (+ (/ (* m z1) 2.0) (* 6 5)))
+	 pc3 (polar pc1 g0 (+ ( +  (* 0.5 Ddinh) dvm) 9))
+	 pc4 (polar pc1 g0 (+ (* Ddinh 0.5)  9))
 	 
 	  vm20 (polar vm11 g270 (- (* (distance vm9 pc4) 2.0) (* d2 2)))
 	 vm21 (polar vm20 g0 5)
@@ -1275,7 +1426,7 @@
   
   nd25  (polar nd1 g180 (/ (- nnd1 dphot) 2.0))
   nd26  (polar nd14 g180 (/ (- nnd1 dphot) 2.0))
-  nd13 (polar nd26 g0 (- (- d3 8.5) (/ dbd 2)))
+  nd13 (polar nd26 g0 (- (- d3 (+ 6 (/ (- dphot dbd) 2.0))) (/ dbd 2.0)))
   nd15 (polar nd25 g270 1)
   
   ) 
@@ -1283,7 +1434,7 @@
   (command "pline" nd1 n02 n03 n4 n5 n6 n7 n9 n10 n11 n12 "")
   (ssadd (entlast) nt)
   (command "pline" n12 nd13 nd14 "")
-  (command "fillet" "r" "10" "")
+  (command "fillet" "r" "5" "")
   (command "fillet" "p" "l" "")
   (ssadd (entlast) nt)
   (command "pline" nd14 nd16 nd18 nd19 nd17 nd1 "")
@@ -1349,9 +1500,9 @@
   (command "-layer" "m" "_mss.bao" "")
   (setq ba1 (polar nd15 g270 9)
         ba0 (polar tr4 g270 1)
-		ba2 (polar ba1 g180 2.5)
+		ba2 (polar ba1 g180 (/ (- dphot dbd) 2.0))
 		ba3 (polar ba0 g0 (/ dbd 2.0))
-		ba4 (polar ba0 g0 (+ (/ dbd 2.0) 2.5))
+		ba4 (polar ba0 g0 (/ dphot 2.0))
 	)
 	(setq bac1 (ssadd))
 	(command "line" ba2 ba1 "")
@@ -1390,8 +1541,8 @@
 	nday12 (polar tr6 g0 3)
 	
 	nday13 (polar tr6 g0 (/ (* 6 0.8) 2))
-	nday14 (polar nday13 g270 3)
-	
+	nday14 (polar nday13 g270 5.5)
+	nday15 (polar nday12 g270 2.5)
 )
 (command "-layer" "m" "_mss.bao" "")
 (setq napday1 (ssadd))
@@ -1425,6 +1576,8 @@
 (ssadd (entlast) napday3)
 (command "line" nday13 nday14 "")
 (ssadd (entlast) napday3)
+(command "line" nday2 nday15 "")
+(ssadd (entlast) napday3)
 
 (setq napday4 (ss-mirror napday3 n1 n14 1))
 
@@ -1441,8 +1594,8 @@
 (setq q1 (polar tr6 g270 2.5)
       q1d (polar q1 g270 (- (/ B 2) (+ (/ C 2) 4))); set diem cang ngang duoi
       q2b (polar q1d g90 B); q nay so voi q1d co chieu rong B
-      q2 (polar q1 g0 (/ dbd 2))
-      q3 (polar q2 g0 (- (/ Dmo 2) (/ dbd 2)))
+      q2 (polar q1 g0 (/ dbd 2.0))
+      q3 (polar q2 g0 (- (/ Dmo 2.0) (/ dbd 2.0)))
       q4 (polar q3 g90 4)
       q5 (polar q4 g0 k1)
    
@@ -1541,7 +1694,7 @@
   
 
   (setq net2 (ssadd))
-  (command ".line"  q1 q2 "")
+  (command ".line"  nday15 q2 "")
   (ssadd (entlast) net2)
   
   ; End Test Step By Step
@@ -1617,26 +1770,27 @@
 	;(setq tobi (getreal "be rong"))
 	;(setq dobi  (getreal "duong kinh o bi"))
 	
-	(setq dbd 30)
-	(setq bbd  40)
+	(setq dbd 40)
+	;(setq bbd  40)
 	(setq dbrn 50)
 	(setq bbrn 90)
 	(setq beta 20)
 	(setq m  2)
-	(setq z1 50)
+	(setq z1 70)
 	;(setq tobi 20)
-	(setq dobi 45)
-	(setq dphot (+ dbd 5) )
-	(setq d2 12)
+	(setq dobi 50)
+	(setq dphot (+ dbd 15) )
+	(setq d2 16)
 
-        (setq d 180.0)
-  	(setq Hd 10)
-  	(setq h0 2.5)
-  	(setq t0 12.0)
-  	(setq e 8.0)
-  	(setq z 3)
-  	(setq b1 10.1)
-
+    (setq d 150.0)
+  	;(setq Hd 10)
+  	;(setq h0 2.5)
+  	;(setq t0 12.0)
+  	;(setq e 8.0)
+  	(setq z 2)
+  ;	(setq b1 10.1)
+	(setq A_1 81)
+   
  (setq tr0 (getpoint"cho tam"))
   (khoitao)
   (tinhtoan)
