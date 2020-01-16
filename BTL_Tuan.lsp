@@ -76,6 +76,14 @@
   ss1					;ket qua tra ve
 )					;defun
 ;;;
+
+;;>>>>>>>>>>> HAM LAY PHAN TU DAU CUA LIST<<<<<<<<<<<<<	
+
+ (defun header# (biglst / lst)	
+  (setq lst (mapcar 'car biglst))	
+  lst	
+)
+
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Hop Thoai <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<;;
    
 
